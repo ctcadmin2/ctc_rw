@@ -9,6 +9,7 @@ import {
 } from 'react-bootstrap'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { Link, routes } from '@redwoodjs/router'
 
 const MainLayout = ({ children }) => {
   return (
@@ -16,7 +17,9 @@ const MainLayout = ({ children }) => {
       <Row>
         <Navbar bg="light">
           <Container fluid>
-            <Navbar.Brand>CTC Admin2</Navbar.Brand>
+            <Navbar.Brand as={Link} to={routes.home()}>
+              CTC Admin2
+            </Navbar.Brand>
             <Nav>
               <NavDropdown title="Language" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -79,7 +82,9 @@ const MainLayout = ({ children }) => {
                 <Nav.Link>Users</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link>Settings</Nav.Link>
+                <Nav.Link as={Link} to={routes.settings()}>
+                  Settings
+                </Nav.Link>
               </Nav.Item>
             </Nav>
           </Card>
