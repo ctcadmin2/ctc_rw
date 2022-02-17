@@ -1,99 +1,56 @@
 import {
-  Accordion,
-  Card,
-  Container,
-  Nav,
-  Navbar,
-  NavDropdown,
-  NavLink,
-} from 'react-bootstrap'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import { Link, routes } from '@redwoodjs/router'
+  Box,
+  Button,
+  Flex,
+  Grid,
+  GridItem,
+  Heading,
+  Spacer,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+} from '@chakra-ui/react'
 
 const MainLayout = ({ children }) => {
   return (
-    <Container fluid>
-      <Row>
-        <Navbar bg="light">
-          <Container fluid>
-            <Navbar.Brand as={Link} to={routes.home()}>
-              CTC Admin2
-            </Navbar.Brand>
-            <Nav>
-              <NavDropdown title="Language" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
-              <Navbar.Text>
-                Signed in as: <a href="#login">Mark Otto</a>
-              </Navbar.Text>
-              <NavLink>LogOut</NavLink>
-            </Nav>
-          </Container>
-        </Navbar>
-      </Row>
-      <Row style={{ paddingTop: '2rem' }}>
-        <Col md="auto" className="d-sm-none d-md-block">
-          <Card body>
-            <Nav className="flex-column">
-              <Nav.Item>
-                <Nav.Link>Vehicles</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link>Credit Notes</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link>Credit Invoices</Nav.Link>
-              </Nav.Item>
-              <Accordion flush>
-                <Accordion.Item eventKey={0}>
-                  <Accordion.Header>Expenses</Accordion.Header>
-                  <Accordion.Body>
-                    <Nav.Item>
-                      <Nav.Link>National Expenses</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                      <Nav.Link>Interational Expenses</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                      <Nav.Link>Trip Expenses</Nav.Link>
-                    </Nav.Item>
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-
-              <Nav.Item>
-                <Nav.Link>Companies</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link>Employees</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link>Users</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link as={Link} to={routes.settings()}>
-                  Settings
-                </Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Card>
-        </Col>
-        <Col>
-          <Card body>{children}</Card>
-        </Col>
-      </Row>
-    </Container>
+    <Grid templateColumns="repeat(12, 1fr)" gap={4} m={4}>
+      <GridItem colSpan={12} w="100%" pb={4}>
+        <Flex
+          borderBottom={2}
+          borderBottomColor={'gray.200'}
+          rounded="5px"
+          shadow="lg"
+          pb={2}
+        >
+          <Box p="2">
+            <Heading size="md">CTCAdmin2</Heading>
+          </Box>
+          <Spacer />
+          <Box mr={2}>
+            <Button colorScheme="teal" mr="4">
+              Sign Up
+            </Button>
+            <Button colorScheme="teal">Log in</Button>
+          </Box>
+        </Flex>
+      </GridItem>
+      <GridItem colSpan={2} w="100%" h="10">
+        <Box rounded="20px" overflow="hidden" shadow="lg">
+          <Tabs orientation="vertical" p={[0, 5]}>
+            <TabList>
+              <Tab boxDecorationBreak="unset">One</Tab>
+              <Tab>Two</Tab>
+              <Tab>Three</Tab>
+            </TabList>
+          </Tabs>
+        </Box>
+      </GridItem>
+      <GridItem colSpan={10} w="100%" bg="blue.500">
+        {children}
+      </GridItem>
+    </Grid>
   )
 }
 
