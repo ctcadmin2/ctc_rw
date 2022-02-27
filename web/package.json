@@ -18,14 +18,11 @@
     "@redwoodjs/web": "^0.44.1",
     "prop-types": "15.7.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
-  },
-  "devDependencies": {
-    "@chakra-ui/react": "^1.8.3",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
-    "framer-motion": "^4",
-    "sass": "^1.45.0",
-    "sass-loader": "^12.4.0"
+    "react-dom": "17.0.2"    ,
+    "primeicons": "^5.0.0",
+    "primeflex": "^3.1.2",
+    "react-transition-group": "^4.4.1",
+    "primereact": "^7.2.0",
+    "web": "^0.0.2"
   }
 }

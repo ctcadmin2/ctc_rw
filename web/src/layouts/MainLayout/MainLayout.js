@@ -1,59 +1,84 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Grid,
-  GridItem,
-  Heading,
-  Spacer,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-} from '@chakra-ui/react'
+import { useLocation, navigate, routes } from '@redwoodjs/router'
+
+import { Menubar } from 'primereact/menubar'
+import { Button } from 'primereact/button'
+import { Card } from 'primereact/card'
+import { Accordion, AccordionTab } from 'primereact/accordion'
 
 const MainLayout = ({ children }) => {
+  const { pathname } = useLocation()
+
   return (
-    <Grid templateColumns="repeat(12, 1fr)" gap={4} m={4}>
-      <GridItem colSpan={12} w="100%" pb={4}>
-        <Flex
-          borderBottom={2}
-          borderBottomColor={'gray.200'}
-          rounded="5px"
-          shadow="lg"
-          pb={2}
+    <div className="grid px-3">
+      <div className="col-12 pb-5">
+        <Menubar
+          className="shadow-3"
+          start={
+            <Button
+              label="CTCAdmin2"
+              className="p-button-text"
+              onClick={() => navigate(routes.home())}
+            />
+          }
+          end={<Button label="Logout" className="p-button-text" />}
+        />
+      </div>
+      <div className="hidden lg:block lg:col-3 xl:col-2">
+        <Card className="shadow-3">
+          <Button
+            label="Vehicles"
+            className="p-button-text w-full text-left border-none border-noround"
+          />
+          <Button
+            label="Credit notes"
+            className="p-button-text w-full text-left border-none border-noround"
+          />
+          <Button
+            label="Credit invoices"
+            className="p-button-text w-full text-left border-none  border-noround"
+          />
+          <Button
+            label="National expenses"
+            className="p-button-text w-full text-left border-none  border-noround"
+          />
+          <Button
+            label="International expenses"
+            className="p-button-text w-full text-left border-none  border-noround"
+          />
+          <Button
+            label="Trip expenses"
+            className="p-button-text w-full text-left border-none  border-noround"
+          />
+          <Button
+            label="Companies"
+            className={`p-button-text w-full text-left border-none border-noround ${
+              pathname.split('/').pop === 'companies' &&
+              'border-right-3 border-teal-500'
+            }`}
+            onClick={() => navigate(routes.companies())}
+          />
+          <Button
+            label="Settings"
+            className={`p-button-text w-full text-left border-none border-noround ${
+              pathname.split('/').pop() === 'settings' &&
+              'border-right-3 border-teal-500'
+            }`}
+            onClick={() => navigate(routes['settings']())}
+          />
+        </Card>
+      </div>
+      <div className="col-12 lg:col-9 xl:col-10 ">
+        <Card
+          title={pathname.split('/').pop()}
+          className="text-center shadow-3 h-30rem"
         >
-          <Box p="2">
-            <Heading size="md">CTCAdmin2</Heading>
-          </Box>
-          <Spacer />
-          <Box mr={2}>
-            <Button colorScheme="teal" mr="4">
-              Sign Up
-            </Button>
-            <Button colorScheme="teal">Log in</Button>
-          </Box>
-        </Flex>
-      </GridItem>
-      <GridItem colSpan={2} w="100%" h="10">
-        <Box rounded="20px" overflow="hidden" shadow="lg">
-          <Tabs orientation="vertical" p={[0, 5]}>
-            <TabList>
-              <Tab boxDecorationBreak="unset">One</Tab>
-              <Tab>Two</Tab>
-              <Tab>Three</Tab>
-            </TabList>
-          </Tabs>
-        </Box>
-      </GridItem>
-      <GridItem colSpan={10} w="100%" bg="blue.500">
-        {children}
-      </GridItem>
-    </Grid>
+          {children}
+        </Card>
+      </div>
+    </div>
   )
 }
 
 export default MainLayout
 
-// xs sm, md, lg, xl, xxl
+//  sm, md, lg, xl
