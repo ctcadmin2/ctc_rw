@@ -3,7 +3,6 @@ import { useLocation, navigate, routes } from '@redwoodjs/router'
 import { Menubar } from 'primereact/menubar'
 import { Button } from 'primereact/button'
 import { Card } from 'primereact/card'
-import { Accordion, AccordionTab } from 'primereact/accordion'
 
 const MainLayout = ({ children }) => {
   const { pathname } = useLocation()

@@ -12,6 +12,12 @@
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config",
+    "rules": {
+      "no-unused-vars": [
+        "error",
+        {"ignoreRestSiblings": true}
+      ]
+    },
     "root": true
   },
   "engines": {

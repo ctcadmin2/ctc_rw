@@ -9,13 +9,133 @@ export default async () => {
     // Update "const data = []" to match your data model and seeding needs
     //
     const data = [
-      // To try this example data with the UserExample model in schema.prisma,
-      // uncomment the lines below and run 'yarn rw prisma migrate dev'
-      //
-      // { name: 'alice', email: 'alice@example.com' },
-      // { name: 'mark', email: 'mark@example.com' },
-      // { name: 'jackie', email: 'jackie@example.com' },
-      // { name: 'bob', email: 'bob@example.com' },
+      {
+        id: 1,
+        name: 'activities',
+        value: ['to be removed'],
+        type: 'main',
+        multi: true,
+      },
+      {
+        id: 2,
+        name: 'currencies',
+        value: ['to be removed'],
+        type: 'main',
+        multi: true,
+      },
+      {
+        id: 4,
+        name: 'paidBy',
+        value: ['to be removed'],
+        type: 'main',
+        multi: true,
+      },
+      {
+        id: 6,
+        name: 'vatRate',
+        value: ['to be removed'],
+        type: 'main',
+        multi: true,
+      },
+      {
+        id: 7,
+        name: 'vehCat',
+        value: ['to be removed'],
+        type: 'main',
+        multi: true,
+      },
+      {
+        id: 3,
+        name: 'diurnaBaza',
+        value: ['to be removed'],
+        type: 'main',
+        multi: false,
+      },
+      {
+        id: 5,
+        name: 'salarBaza',
+        value: ['to be removed'],
+        type: 'main',
+        multi: false,
+      },
+
+      {
+        id: 8,
+        name: 'name',
+        value: ['to be removed'],
+        type: 'company',
+        multi: false,
+      },
+      {
+        id: 9,
+        name: 'registration',
+        value: ['to be removed'],
+        type: 'company',
+        multi: false,
+      },
+      {
+        id: 10,
+        name: 'vat',
+        value: ['to be removed'],
+        type: 'company',
+        multi: false,
+      },
+      {
+        id: 11,
+        name: 'address',
+        value: ['to be removed'],
+        type: 'company',
+        multi: false,
+      },
+      {
+        id: 12,
+        name: 'accRon',
+        value: ['to be removed'],
+        type: 'company',
+        multi: false,
+      },
+      {
+        id: 13,
+        name: 'accEur',
+        value: ['to be removed'],
+        type: 'company',
+        multi: false,
+      },
+      {
+        id: 14,
+        name: 'bank',
+        value: ['to be removed'],
+        type: 'company',
+        multi: false,
+      },
+      {
+        id: 15,
+        name: 'capital',
+        value: ['to be removed'],
+        type: 'company',
+        multi: false,
+      },
+      {
+        id: 16,
+        name: 'phone',
+        value: ['to be removed'],
+        type: 'company',
+        multi: false,
+      },
+      {
+        id: 17,
+        name: 'email',
+        value: ['to be removed'],
+        type: 'company',
+        multi: false,
+      },
+      {
+        id: 18,
+        name: 'contact',
+        value: ['to be removed'],
+        type: 'company',
+        multi: false,
+      },
     ]
     console.log(
       "\nUsing the default './scripts/seed.{js,ts}' template\nEdit the file to add seed data\n"
@@ -28,7 +148,7 @@ export default async () => {
       // Change to match your data model and seeding needs
       //
       data.map(async (data) => {
-        const record = await db.userExample.create({ data })
+        const record = await db.setting.create({ data })
         console.log(record)
       })
     )

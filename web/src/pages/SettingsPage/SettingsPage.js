@@ -1,20 +1,17 @@
-import { Link, routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import { TabView, TabPanel } from 'primereact/tabview'
+
+import SettingsCell from 'src/components/SettingsCell/'
 
 const SettingsPage = () => {
   return (
-    <>
-      <MetaTags title="Settings" description="Settings page" />
-
-      <h1>SettingsPage</h1>
-      <p>
-        Find me in <code>./web/src/pages/SettingsPage/SettingsPage.js</code>
-      </p>
-      <p>
-        My default route is named <code>settings</code>, link to me with `
-        <Link to={routes.settings()}>Settings</Link>`
-      </p>
-    </>
+    <TabView>
+      <TabPanel header="Main">
+        <SettingsCell type="main" />
+      </TabPanel>
+      <TabPanel header="Company">
+        <SettingsCell type="company" />
+      </TabPanel>
+    </TabView>
   )
 }
 
