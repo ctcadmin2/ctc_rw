@@ -9,7 +9,7 @@ const MainLayout = ({ children }) => {
 
   return (
     <div className="grid px-3">
-      <div className="col-12 pb-5">
+      <div className="col-12 pb-3">
         <Menubar
           className="shadow-3"
           start={
@@ -26,7 +26,11 @@ const MainLayout = ({ children }) => {
         <Card className="shadow-3">
           <Button
             label="Vehicles"
-            className="p-button-text w-full text-left border-none border-noround"
+            className={`p-button-text w-full text-left border-none border-noround ${
+              pathname.split('/').pop === 'vehicles' &&
+              'border-right-3 border-teal-500'
+            }`}
+            onClick={() => navigate(routes.vehicles())}
           />
           <Button
             label="Credit notes"
@@ -69,7 +73,7 @@ const MainLayout = ({ children }) => {
       <div className="col-12 lg:col-9 xl:col-10 ">
         <Card
           title={pathname.split('/').pop()}
-          className="text-center shadow-3 h-30rem"
+          className="text-center shadow-3 h-30rem overflow-scroll"
         >
           {children}
         </Card>

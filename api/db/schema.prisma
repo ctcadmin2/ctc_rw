@@ -18,3 +18,11 @@ model Setting {
   type  String
   multi Boolean
 }
+
+model Vehicle {
+  id           Int     @id @default(autoincrement())
+  registration String
+  vin          String  @unique
+  category     String?
+  active       Boolean @default(true)
+}
