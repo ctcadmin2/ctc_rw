@@ -13,16 +13,16 @@
     ]
   },
   "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.5.0",
+    "@mui/material": "^5.5.0",
     "@redwoodjs/forms": "^0.47.0",
     "@redwoodjs/router": "^0.47.0",
     "@redwoodjs/web": "^0.47.0",
     "prop-types": "15.7.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "primeicons": "^5.0.0",
-    "primeflex": "^3.1.2",
-    "react-transition-group": "^4.4.1",
-    "primereact": "^7.2.0",
     "web": "^0.0.2"
   }
 }
