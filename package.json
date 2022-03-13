@@ -8,14 +8,16 @@
     ]
   },
   "devDependencies": {
-    "@redwoodjs/core": "^0.47.0"
+    "@redwoodjs/core": "^0.49.1"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config",
     "rules": {
       "no-unused-vars": [
         "error",
-        {"ignoreRestSiblings": true}
+        {
+          "ignoreRestSiblings": true
+        }
       ]
     },
     "root": true
