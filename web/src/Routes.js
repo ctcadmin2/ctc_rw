@@ -20,7 +20,6 @@ const Routes = () => {
         <Set wrap={VehiclesLayout}>
           <Route path="/vehicles/new" page={VehicleNewVehiclePage} name="newVehicle" />
           <Route path="/vehicles/{id:Int}/edit" page={VehicleEditVehiclePage} name="editVehicle" />
-          <Route path="/vehicles/{id:Int}" page={VehicleVehiclePage} name="vehicle" />
           <Route path="/vehicles" page={VehicleVehiclesPage} name="vehicles" />
         </Set>
       </Set>

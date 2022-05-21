@@ -8,17 +8,15 @@ export const schema = gql`
   }
 
   type Query {
-    settings(type: String!): [Setting!]! @skipAuth
+    settings(type: String!): [Setting!]! @requireAuth
+    setting(name: String!): Setting! @requireAuth
   }
 
   type Mutation {
-    updateSettings(id: Int!, input: UpdateSettingInput!): Setting! @skipAuth
+    updateSettings(id: Int!, input: UpdateSettingInput!): Setting! @requireAuth
   }
 
   input UpdateSettingInput {
-    name: String
     value: [String]!
-    type: String
-    multi: Boolean
   }
 `

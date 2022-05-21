@@ -16,11 +16,11 @@ const NewVehicle = () => {
     CREATE_VEHICLE_MUTATION,
     {
       onCompleted: () => {
-        toast.success('Vehicle created')
+        toast.success('Vehicle created!')
         navigate(routes.vehicles())
       },
-      onError: (error) => {
-        toast.error(error.message)
+      onError: (_error) => {
+        toast.error("Vehicle could not be saved!")
       },
     }
   )
@@ -29,16 +29,7 @@ const NewVehicle = () => {
     createVehicle({ variables: { input } })
   }
 
-  return (
-    <div className="rw-segment">
-      <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">New Vehicle</h2>
-      </header>
-      <div className="rw-segment-main">
-        <VehicleForm onSave={onSave} loading={loading} error={error} />
-      </div>
-    </div>
-  )
+  return <VehicleForm onSave={onSave} loading={loading} error={error} />
 }
 
 export default NewVehicle

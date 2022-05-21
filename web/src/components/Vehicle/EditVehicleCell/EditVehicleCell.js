@@ -47,25 +47,16 @@ export const Success = ({ vehicle }) => {
     }
   )
 
-  const onSave = (input, id) => {
-    updateVehicle({ variables: { id, input } })
+  const onSave = (input) => {
+    updateVehicle({ variables: { id: vehicle.id, input } })
   }
 
   return (
-    <div className="rw-segment">
-      <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">
-          Edit Vehicle {vehicle.id}
-        </h2>
-      </header>
-      <div className="rw-segment-main">
-        <VehicleForm
-          vehicle={vehicle}
-          onSave={onSave}
-          error={error}
-          loading={loading}
-        />
-      </div>
-    </div>
+    <VehicleForm
+      vehicle={vehicle}
+      onSave={onSave}
+      error={error}
+      loading={loading}
+    />
   )
 }

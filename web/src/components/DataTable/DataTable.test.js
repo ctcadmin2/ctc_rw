@@ -1,14 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import NavList from './NavList'
+import DataTable from './DataTable'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
 
-describe('NavList', () => {
+describe('DataTable', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<NavList />)
+      render(<DataTable />)
     }).not.toThrow()
   })
 })

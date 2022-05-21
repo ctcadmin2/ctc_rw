@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import { Chips } from 'primereact/chips'
-import { Inplace, InplaceContent, InplaceDisplay } from 'primereact/inplace'
-import { Accordion, AccordionTab } from 'primereact/accordion'
-import { InputText } from 'primereact/inputtext'
 import { useMutation } from '@redwoodjs/web'
+import TagsGroup from '../TagsGroup/TagsGroup'
+import { Collapse } from 'antd'
+import EditableInput from '../EditableInput/EditableInput'
+
+const { Panel } = Collapse
 
 export const QUERY = gql`
   query SettingsQuery($type: String!) {
@@ -35,52 +35,33 @@ export const Failure = ({ error }) => (
 )
 
 export const Success = ({ settings }) => {
-  // const [active, setActive] = useState(false)
-  const [value, setValue] = useState([])
   const [updateSettings] = useMutation(UPDATE_SETTINGS)
 
-  const updateValue = (item, input = null) => {
-    const { __typename, id, ...data } = item
-
+  const updateValue = (itemId, value) => {
     updateSettings({
-      variables: { id, input: { ...data, value: input || value } },
+      variables: { id: itemId, input: { value } },
     })
   }
 
   return (
-    <Accordion>
-      {settings.map((item) => {
-        return (
-          <AccordionTab key={item.id} header={item.name}>
-            {item.multi ? (
-              <Chips
-                value={item.value}
-                separator={','}
-                onChange={(e) => updateValue(item, e.value)}
-              ></Chips>
-            ) : (
-              <Inplace
-                closable
-                onClose={() => {
-                  updateValue(item)
-                }}
-              >
-                <InplaceDisplay>{item.value || 'Click to Edit'}</InplaceDisplay>
-                <InplaceContent>
-                  <InputText
-                    defaultValue={item.value}
-                    onChange={(e) => {
-                      setValue(e.target.value)
-                    }}
-                    // eslint-disable-next-line jsx-a11y/no-autofocus
-                    autoFocus
-                  />
-                </InplaceContent>
-              </Inplace>
-            )}
-          </AccordionTab>
-        )
-      })}
-    </Accordion>
+    <Collapse accordion>
+      {settings.map((item) => (
+        <Panel header={item.name} key={item.id}>
+          {item.multi ? (
+            <TagsGroup
+              tags={item.value}
+              id={item.id}
+              updateValue={updateValue}
+            />
+          ) : (
+            <EditableInput
+              id={item.id}
+              value={item.value}
+              updateValue={updateValue}
+            />
+          )}
+        </Panel>
+      ))}
+    </Collapse>
   )
 }

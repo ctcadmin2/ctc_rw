@@ -1,51 +1,20 @@
-import { Box, Tab, Tabs, Typography } from '@mui/material'
 import SettingsCell from 'src/components/SettingsCell/'
+import { Tabs } from 'antd'
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props
+const { TabPane } = Tabs
 
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  )
-}
+function callback(key) {}
 
 const SettingsPage = () => {
-  const [value, setValue] = React.useState(0)
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue)
-  }
   return (
-    <>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
-          <Tab label="Main" />
-          <Tab label="Company" />
-        </Tabs>
-      </Box>
-      <TabPanel value={value} index={0}>
+    <Tabs defaultActiveKey="1" onChange={callback}>
+      <TabPane tab="General" key="1">
         <SettingsCell type="main" />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
+      </TabPane>
+      <TabPane tab="Company" key="2">
         <SettingsCell type="company" />
-      </TabPanel>
-    </>
+      </TabPane>
+    </Tabs>
   )
 }
 
