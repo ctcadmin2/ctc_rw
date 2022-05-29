@@ -5,6 +5,19 @@ export const vehicles = () => {
   return db.vehicle.findMany()
 }
 
+export const registrationList = () => {
+  return db.vehicle.findMany({
+    select: {
+      id: true,
+      registration: true,
+    },
+    where: {
+      category: 'camion',
+      active: true,
+    },
+  })
+}
+
 export const vehicle = ({ id }) => {
   return db.vehicle.findUnique({
     where: { id },
@@ -12,15 +25,15 @@ export const vehicle = ({ id }) => {
 }
 
 export const vehiclesPage = ({ page = 1 }) => {
-  const offset = (page - 1) * 5
+  const offset = (page - 1) * parseInt(process.env.POSTS_PER_PAGE)
 
   return {
     vehicles: db.vehicle.findMany({
-      take: 5,
+      take: parseInt(process.env.POSTS_PER_PAGE),
       skip: offset,
       orderBy: [{ active: 'desc' }, { registration: 'desc' }],
     }),
-    count: db.vehicle.count(),
+    total: db.vehicle.count(),
   }
 }
 
@@ -33,7 +46,7 @@ export const createVehicle = ({ input }) => {
 
 export const updateVehicle = ({ id, input }) => {
   return db.vehicle.update({
-    data: {...input},
+    data: { ...input },
     where: { id },
   })
 }

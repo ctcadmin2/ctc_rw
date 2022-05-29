@@ -49,10 +49,10 @@ const MainLayout = ({ children }) => {
         backIcon={false}
         title={<Title level={4}>CTCAdmin2</Title>}
         extra={[
-          <Space size="large">
-            <Text key={1}>Logged in as user</Text>
-            <Text key={2}>Select</Text>
-          </Space>,
+          // <Space size="large">
+          //   <Text key={1}>Logged in as user</Text>
+          //   <Text key={2}>Select</Text>
+          // </Space>,
           <Button key={3} type="text">
             Logout
           </Button>,

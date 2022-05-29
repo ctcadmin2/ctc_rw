@@ -46,7 +46,6 @@ export const Failure = ({ error }) => (
 )
 
 export const Success = ({ setting, select, value, onChange }) => {
-
   const options = setting.value.map((value) => (
     <Option key={value} value={value} />
   ))

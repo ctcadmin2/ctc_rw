@@ -1,7 +1,7 @@
 export const schema = gql`
   type Query {
     vehiclesPage(page: Int): VehiclesPage @requireAuth
-    vehicles: [Vehicle!]! @requireAuth
+    registrationList: [Vehicle!]! @requireAuth
     vehicle(id: Int!): Vehicle @requireAuth
   }
 
@@ -20,7 +20,7 @@ export const schema = gql`
 
   type VehiclesPage {
     vehicles: [Vehicle!]! @requireAuth
-    count: Int! @requireAuth
+    total: Int! @requireAuth
   }
 
   input CreateVehicleInput {

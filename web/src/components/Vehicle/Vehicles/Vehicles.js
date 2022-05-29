@@ -8,7 +8,7 @@ import { navigate, routes } from '@redwoodjs/router'
 import { Dropdown, Menu } from 'antd'
 import DataTable from 'src/components/DataTable/DataTable'
 
-const VehiclesList = ({ vehicles, handleDelete, count, currentPage }) => {
+const VehiclesList = ({ vehicles, handleDelete, total, currentPage }) => {
   const menu = ({ id, registration }) => {
     return (
       <Menu
@@ -82,7 +82,7 @@ const VehiclesList = ({ vehicles, handleDelete, count, currentPage }) => {
     <DataTable
       data={vehicles}
       columns={columns}
-      count={count}
+      total={total}
       currentPage={currentPage}
     />
   )

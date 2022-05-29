@@ -14,7 +14,7 @@ export const QUERY = gql`
         category
         active
       }
-      count
+      total
     }
   }
 `
@@ -50,7 +50,11 @@ export const Failure = ({ error }) => (
   <div className="rw-cell-error">{error.message}</div>
 )
 
-export const Success = ({ vehiclesPage, page }) => {
+export const Success = ({
+  vehiclesPage: { vehicles },
+  vehiclesPage: { total },
+  page,
+}) => {
   const [deleteVehicle] = useMutation(DELETE_VEHICLE_MUTATION, {
     onCompleted: () => {
       toast.success('Vehicle deleted')
@@ -75,9 +79,9 @@ export const Success = ({ vehiclesPage, page }) => {
 
   return (
     <Vehicles
-      vehicles={vehiclesPage.vehicles}
+      vehicles={vehicles}
       handleDelete={onDeleteClick}
-      count={vehiclesPage.count}
+      total={total}
       currentPage={page}
     />
   )
